@@ -5,7 +5,7 @@ The project is a telegram bot (https://t.me/RLT_hackaton_bot) that performs auto
 for their effective involvement in electronic bidding. 
 That is, the customer enters into the telegram bot the number of the item he wants to buy 
 and the bot provides a ranked list of suppliers for that item.
-[RLT_Университет_Интенсив_СПБ_сентябрь_2024_final_1000.pptx](img/RLT_Университет_Интенсив_СПБ_сентябрь_2024_final_1000.pptx)
+https://uni.roseltorg.ru/article/otkryta-registraciya-na-intensiv-roseltorguniversiteta
 
 The work explored all the business processes of supplying goods, domain specific data, the components that matter most for supplier selection, and created a supplier segmentation mechanism. 
 
