@@ -11,6 +11,8 @@ async def start_command(message: types.Message) -> None:
     Attributes:
         message: obj to get user information or send something to user
     """
-    await message.answer(f"Welcome, <b>{html.quote(message.from_user.full_name)}</b>!")
+    await message.answer(f"Добро пожаловать, <b>{html.quote(message.from_user.full_name)}</b>!\n"
+                         f"Данный бот создан для предоставления списка релевантных поставщиков.\n"
+                         f"Отправьте номер процедуры в правильном формате.")
     print(message.from_user.id, message.from_user.full_name)
 
