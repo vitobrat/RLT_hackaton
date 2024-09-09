@@ -7,6 +7,7 @@ import joblib
 # 70_23.31.10.120
 # 0865200000323000217_
 
+
 class Category:
     df_items = pd.read_csv("data/preprocess data/items_data")
     df_count = pd.read_csv("data/preprocess data/count_data")
@@ -19,8 +20,10 @@ class Category:
         self.__model = joblib.load("src/model/knn_model.pkl")
 
     def get_first_category(self, input_region_code, input_code):
-        result = self.df_count[(self.df_count["okpd2_code"] == input_code) &
-                               (self.df_count["region_code"] == int(input_region_code))]
+        result = self.df_count[
+            (self.df_count["okpd2_code"] == input_code)
+            & (self.df_count["region_code"] == int(input_region_code))
+        ]
         sorted_result = result.sort_values(by="win_count", ascending=False)["supplier"]
 
         return sorted_result
@@ -29,11 +32,13 @@ class Category:
         self.__scaler.mean_ = self.__mean
         self.__scaler.var_ = self.__variance
         self.__scaler.scale_ = np.sqrt(self.__variance)
-        input_embedding = self.df_items[self.df_items["okpd2_code"] == input_code].values[:, 1:]
+        input_embedding = self.df_items[
+            self.df_items["okpd2_code"] == input_code
+        ].values[:, 1:]
         input_features = self.__scaler.transform([[input_region_code]])
         input_data = np.concatenate([input_features, input_embedding], axis=1)
         distances, indices = self.__model.kneighbors(input_data)
-        ranked_suppliers = self.df_count.iloc[indices[0]]['supplier']
+        ranked_suppliers = self.df_count.iloc[indices[0]]["supplier"]
 
         return ranked_suppliers
 
@@ -54,4 +59,3 @@ if __name__ == "__main__":
     print(cat.get_first_category(input_region_code, input_code))
     print(cat.get_second_category(input_region_code, input_code))
     print(cat.from_pn_to_str("0865200000323000217_"))
-

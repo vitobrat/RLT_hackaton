@@ -3,10 +3,7 @@ from src.model.main import Category
 
 router = Router()
 category = Category()
-output_format = ("Категория №1:\n"
-                 "{0}\n"
-                 "Категория №2:\n"
-                 "{1}")
+output_format = "Категория №1:\n" "{0}\n" "Категория №2:\n" "{1}"
 
 
 @router.message(F.text)
@@ -29,4 +26,6 @@ async def print_text(message: types.Message):
         if not (supplier in exist):
             second_category_output += f"Приоритет: {i}, Поставщик:{supplier}\n"
             i += 1
-    await message.answer(output_format.format(first_category_output, second_category_output))
+    await message.answer(
+        output_format.format(first_category_output, second_category_output)
+    )

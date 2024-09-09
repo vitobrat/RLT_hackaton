@@ -16,7 +16,7 @@ async def main() -> None:
     )
     logger.error("Starting bot")
     token = config("config.ini", "bot_token")["token"]
-    bot = Bot(token=token, default=DefaultBotProperties(parse_mode='HTML'))
+    bot = Bot(token=token, default=DefaultBotProperties(parse_mode="HTML"))
     dp = Dispatcher()
     dp.include_routers(handler_commands.router, handler_messages.router)
     await bot.delete_webhook(drop_pending_updates=True)
